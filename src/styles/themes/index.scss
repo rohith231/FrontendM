@@ -1,0 +1,64 @@
+/* *
+ * MUI THEME
+ *   Supplemental to MuiTheme
+ */
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+a {
+  // @todo: Add from MuiLink - <a> styles wont be fixed until we only use <MuiLink>
+  text-decoration: none;
+  cursor: pointer;
+}
+
+p {
+  margin-bottom: .2rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/**
+ * Sticky Footer using Main Page Region
+ */
+main {
+  flex: 1;
+}
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100%;
+}
+
+/* *
+ * Slick JS - Carousel Styles
+ */
+.slick-dots {
+  bottom: -23;
+  li {
+    margin: 0;
+    width: 18px;
+    button:before {
+      font-size: 7px;
+    }
+  }
+}
+
+.slick-prev:before, .slick-next:before  {
+  content: '';
+}
+
+/**
+ * Zeamster
+ */
+iframe {
+  border: none;
+}

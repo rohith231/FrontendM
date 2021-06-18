@@ -1,0 +1,9 @@
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-bold: 700;
+
+:export {
+  regular: $fw-regular;
+  medium: $fw-medium;
+  bold: $fw-bold;
+}

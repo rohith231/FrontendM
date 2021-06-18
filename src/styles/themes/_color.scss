@@ -1,0 +1,39 @@
+$primary: #3366cc;
+$secondary: #333333;
+$success: #33cc99;
+$info: #3366cc;
+$warning: #ffcc00;
+$danger: #ff6633;
+$black: #333333;
+$grey: #a29e9e;
+$silver: #e5e5e5;
+$light: #f4f4f4;
+$lightBlue: #dae3f4;
+$white: #ffffff;
+$amber: #ffc000;
+$cyan: #009999;
+$fuschia: #e66dc9;
+$poppy: #ff5743;
+$semi: rgba(229, 229, 229, 0.5);
+$transparent: rgba(0, 0, 0, 0);
+
+:export {
+  primary: $primary;
+  secondary: $secondary;
+  success: $success;
+  info: $info;
+  warning: $warning;
+  danger: $danger;
+  black: $black;
+  grey: $grey;
+  silver: $silver;
+  light: $light;
+  lightBlue: $lightBlue;
+  white: $white;
+  amber: $amber;
+  cyan: $cyan;
+  fuschia: $fuschia;
+  poppy: $poppy;
+  semi: $semi;
+  transparent: $transparent;
+}

@@ -1,0 +1,20 @@
+// Common sizing values for theming consistency
+$auto: auto;
+$none: 0;
+$xs: 8px;
+$sm: 12px;
+$nm: 16px;
+$md: 20px;
+$lg: 24px;
+$xl: 28px;
+
+:export {
+    auto: $auto;
+    none: $none;
+    xs: $xs;
+    sm: $sm;
+    nm: $nm;
+    md: $md;
+    lg: $lg;
+    xl: $xl;
+}

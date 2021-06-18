@@ -1,0 +1,29 @@
+$h1: normal;
+$h2: normal;
+$h3: 0.3px;
+$h4: 0.3px;
+$h5: 0.4px;
+$h6: normal;
+$body1: normal;
+$body2: normal;
+$subtitle1: 0.3px;
+$subtitle2: normal;
+$caption: normal;
+$buttonNormal: normal;
+$buttonSmall: normal;
+$buttonLarge: 0.3px;
+
+:export {
+  h1: $h1;
+  h2: $h2;
+  h3: $h3;
+  h4: $h4;
+  h5: $h5;
+  h6: $h6;
+  body1: $body1;
+  body2: $body2;
+  subtitle: $subtitle1;
+  buttonNormal: $buttonNormal;
+  buttonSmall: $buttonSmall;
+  buttonLarge: $buttonLarge;
+}

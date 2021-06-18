@@ -1,0 +1,9 @@
+@import url("https://use.typekit.net/gsl4uai.css");
+
+$font-camp: "campaign";
+$font-stevie: "stevie-sans";
+
+:export {
+  camp: $font-camp;
+  stevie: $font-stevie;
+}

@@ -1,0 +1,54 @@
+.container{
+    max-width: 1220px;
+    padding: 4rem;
+    .form-wrapper{
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+      .form{
+        margin:2rem 6rem;
+        h1{
+            color:#111111;
+            margin-top: 5px;
+            font-size: 1.75rem;
+            margin-bottom: 50px;
+          }
+        .input-label{
+          font-size:14px;
+          padding-bottom: 8px;
+        }
+        .text-input{
+          width:100%;   
+          color:#777777;
+          margin-bottom: 2rem;
+          .MuiFormHelperText-root{
+            display: flex;
+            justify-content: flex-end;
+            color:#5571C6;
+          }
+        }
+        .submit{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          .btn-primary{
+            font-weight: 500;
+            color: #fff !important;
+            background-color: #5571C6 !important;
+            text-transform: capitalize !important;
+            width:130px;
+          }
+          h5{
+            color:#777777;
+            margin-top: 8px;
+          }
+          a{
+              color: #5571C6;
+          }
+        }
+        .error-login{
+          color:#777777;
+          text-align: center;
+          margin-top:8rem;
+        }
+      }
+    }
+  }

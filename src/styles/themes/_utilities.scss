@@ -1,0 +1,11 @@
+/**
+ * TRUNCATE - trunc
+ * 
+ * For use in single-line truncation
+ */
+.ms-trunc {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

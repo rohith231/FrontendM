@@ -1,0 +1,40 @@
+.header-container{
+    .navTextContainer{
+        background-color: hsl(166, 31%, 40%);
+        p{
+            font-size: 16px;
+            font-weight: "500";
+            color:white;
+            padding: 10px 10px 10px 55px;
+            margin: 0;
+            #sp{
+                text-decoration: underline;
+                margin-left:12px;
+            }
+        }
+    }
+    .ulContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        li{
+            padding: 15px 0px;
+            list-style: none;
+            margin:0px 2rem;
+        }
+        li a {
+            text-decoration:none;
+            color: black;
+            font-weight: 500;
+        }
+        li a:hover {
+            color: red;
+        }
+        li .btn-primary{
+            font-weight: 500;
+            color: #fff !important;
+            background-color: #5571C6 !important;
+            text-transform: capitalize !important;
+          }
+    }
+}

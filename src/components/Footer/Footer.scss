@@ -1,0 +1,19 @@
+.footer-container{
+    // margin: 116px 0;
+}
+.inner-container{
+    // margin-left: 60px;
+    // margin-right: 100px;
+    background-color: white;
+    display: flex;
+    justify-content: space-evenly;
+}
+.items{
+    //margin-top :50px;
+}
+p{
+    cursor: pointer;
+}
+p:hover {
+    color: red;
+}
