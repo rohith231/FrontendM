@@ -1,4 +1,5 @@
 import React, { useState, useEffect, FormEvent } from "react";
+
 import DeviceSelectionScreen from "./DeviceSelectionScreen/DeviceSelectionScreen";
 import IntroContainer from "../IntroContainer/IntroContainer";
 import MediaErrorSnackbar from "./MediaErrorSnackbar/MediaErrorSnackbar";
@@ -10,6 +11,11 @@ import useVideoContext from "../../hooks/useVideoContext/useVideoContext";
 export enum Steps {
   roomNameStep,
   deviceSelectionStep,
+}
+
+enum ParticipantTypes {
+  DOCTOR = "doctor",
+  PATIENT = "patient",
 }
 
 export default function PreJoinScreens() {
@@ -42,41 +48,47 @@ export default function PreJoinScreens() {
     }
   }, [getAudioAndVideoTracks, step, mediaError]);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (type: string, event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // If this app is deployed as a twilio function, don't change the URL because routing isn't supported.
     if (!window.location.origin.includes("twil.io")) {
       window.history.replaceState(
         null,
         "",
-        window.encodeURI(`/room/${roomName}${window.location.search || ""}`)
+        window.encodeURI(
+          `/room/${roomName}${window.location.search || ""}#${type}`
+        )
       );
     }
     setStep(Steps.deviceSelectionStep);
   };
 
-  return (
-    <>
-      {step === Steps.deviceSelectionStep ? (
-        <DeviceSelectionScreen
+  const checkParticipant = (event: FormEvent<HTMLFormElement>) => {
+    let participantType = ParticipantTypes.PATIENT;
+    if (name === ParticipantTypes.DOCTOR) {
+      participantType = ParticipantTypes.DOCTOR;
+    }
+    handleSubmit(participantType, event);
+  };
+
+  const Intro = () => (
+    <IntroContainer>
+      <MediaErrorSnackbar error={mediaError} />
+      {step === Steps.roomNameStep && (
+        <RoomNameScreen
           name={name}
           roomName={roomName}
-          setStep={setStep}
+          setName={setName}
+          setRoomName={setRoomName}
+          handleSubmit={checkParticipant}
         />
-      ) : (
-        <IntroContainer>
-          <MediaErrorSnackbar error={mediaError} />
-          {step === Steps.roomNameStep && (
-            <RoomNameScreen
-              name={name}
-              roomName={roomName}
-              setName={setName}
-              setRoomName={setRoomName}
-              handleSubmit={handleSubmit}
-            />
-          )}
-        </IntroContainer>
       )}
-    </>
+    </IntroContainer>
   );
+
+  const WaitingScreen = () => (
+    <DeviceSelectionScreen name={name} roomName={roomName} setStep={setStep} />
+  );
+
+  return <>{step === Steps.deviceSelectionStep ? WaitingScreen() : Intro()}</>;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Typography, Grid, Button, Hidden } from "@material-ui/core";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -24,6 +24,11 @@ interface DeviceSelectionScreenProps {
   setStep: (step: Steps) => void;
 }
 
+enum ParticipantTypes {
+  DOCTOR = "doctor",
+  PATIENT = "patient",
+}
+
 export default function DeviceSelectionScreen({
   name,
   roomName,
@@ -44,6 +49,13 @@ export default function DeviceSelectionScreen({
     ["#FFCA28", 0.5],
     ["#E65100", 0.5],
   ];
+
+  useEffect(() => {
+    const type = window.location.hash.replace("#", "");
+    if (type === ParticipantTypes.DOCTOR) {
+      handleJoin();
+    }
+  }, []);
 
   const currentDateTime = new Date();
   let futureDateTime = new Date();
@@ -150,7 +162,10 @@ export default function DeviceSelectionScreen({
             <AddPersonButton className={classes.buttons} onClick={() => {}} />
             <DisconnectButton
               className={classes.disconnectButton}
-              onClick={() => setStep(Steps.roomNameStep)}
+              onClick={() => {
+                window.location.href = "/video";
+                setStep(Steps.roomNameStep);
+              }}
             />
           </div>
         </Grid>
