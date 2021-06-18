@@ -2,8 +2,12 @@ import { makeStyles, Theme } from "@material-ui/core";
 
 export const deviceSelectionScreenStyles = makeStyles((theme: Theme) => ({
   background: {
-    background: "#333333",
     position: "relative",
+    backgroundImage: 'url("http://localhost:3000/bgImage.jpg")',
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    height: "100%",
+    backgroundPosition: "center",
   },
   gutterBottom: {
     marginBottom: "1em",
@@ -60,6 +64,8 @@ export const deviceSelectionScreenStyles = makeStyles((theme: Theme) => ({
     fontSize: "1rem",
     color: "#fff",
     margin: 0,
+    marginTop: "1rem",
+
     "&:hover": {
       color: "white",
     },

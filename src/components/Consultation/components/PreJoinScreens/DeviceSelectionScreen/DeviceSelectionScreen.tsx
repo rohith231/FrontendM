@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Typography, Grid, Button, Hidden } from "@material-ui/core";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import moment from "moment";
 
 import LocalVideoPreview from "./LocalVideoPreview/LocalVideoPreview";
 import DeviceSelectionDialog from "../../DeviceSelectionDialog/DeviceSelectionDialog";
@@ -9,6 +10,8 @@ import AvatarIcon from "../../../icons/AvatarIcon";
 import ToggleAudioButton from "../../Buttons/ToggleAudioButton/ToggleAudioButton";
 import ToggleVideoButton from "../../Buttons/ToggleVideoButton/ToggleVideoButton";
 import DisconnectButton from "../../Buttons/DisconnectButton/DisconnectButton";
+import ChatButton from "../../Buttons/ChatButton/ChatButton";
+import AddPersonButton from "../../Buttons/AddPersonButton/AddPersonButton";
 import useChatContext from "../../../hooks/useChatContext/useChatContext";
 import useVideoContext from "../../../hooks/useVideoContext/useVideoContext";
 import { useAppState } from "../../../state";
@@ -41,16 +44,28 @@ export default function DeviceSelectionScreen({
     ["#FFCA28", 0.5],
     ["#E65100", 0.5],
   ];
+
+  const currentDateTime = new Date();
+  let futureDateTime = new Date();
+  futureDateTime.setMinutes(currentDateTime.getMinutes() + 30);
+
+  const getDurationInMinutes = (): number => {
+    return moment(futureDateTime).diff(moment(currentDateTime), "minutes");
+  };
+
+  const getDurationInSeconds = (): number => {
+    return moment(futureDateTime).diff(moment(currentDateTime), "seconds");
+  };
+
   const doctorInfo = {
     name: "Dr Lisa Ray Md",
-    duration: "30 Minutes",
-    startTime: "10:00 AM",
-    endTime: "10:30 AM",
+    duration: `${getDurationInMinutes()} Minutes`,
+    startTime: moment().format("hh:mm a"),
+    endTime: moment(futureDateTime).format("hh:mm a"),
   };
-  const DEFAULT_TIMER = 1000; // In seconds
 
   const getTimer = (): React.ReactElement => {
-    const hours = formatZeros(Math.floor(remainingTime / 3600));
+    const hours = formatZeros(Math.floor((remainingTime % (3600 * 24)) / 3600));
     const minutes = formatZeros(Math.floor((remainingTime % 3600) / 60));
     const seconds = formatZeros(remainingTime % 60);
 
@@ -86,7 +101,7 @@ export default function DeviceSelectionScreen({
     return (
       <CountdownCircleTimer
         isPlaying
-        duration={DEFAULT_TIMER}
+        duration={getDurationInSeconds()}
         strokeWidth={4}
         size={100}
         isLinearGradient
@@ -131,6 +146,8 @@ export default function DeviceSelectionScreen({
               disabled={disableButtons}
               hideLabel
             />
+            <ChatButton className={classes.buttons} onClick={() => {}} />
+            <AddPersonButton className={classes.buttons} onClick={() => {}} />
             <DisconnectButton
               className={classes.disconnectButton}
               onClick={() => setStep(Steps.roomNameStep)}
