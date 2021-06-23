@@ -63,7 +63,7 @@ export default function DeviceSelectionScreen({
 
   const currentDateTime = new Date();
   let futureDateTime = new Date();
-  futureDateTime.setMinutes(currentDateTime.getMinutes() + 10000);
+  futureDateTime.setMinutes(currentDateTime.getMinutes() + 1);
 
   const getDurationInMinutes = (): number => {
     return moment(futureDateTime).diff(moment(currentDateTime), "minutes");
@@ -151,7 +151,7 @@ export default function DeviceSelectionScreen({
             </Button>
           </div>
 
-          <div className={classes.buttonsContainer}>
+          <div className={classes.footer}>
             <ToggleAudioButton
               className={classes.buttons}
               disabled={disableButtons}

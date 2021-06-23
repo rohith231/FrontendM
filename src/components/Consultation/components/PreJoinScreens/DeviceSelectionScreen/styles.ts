@@ -70,7 +70,7 @@ export const deviceSelectionScreenStyles = makeStyles((theme: Theme) => ({
       color: "white",
     },
   },
-  buttonsContainer: {
+  footer: {
     position: "absolute",
     width: "100%",
     bottom: "3rem",
