@@ -157,6 +157,7 @@ export default function DeviceSelectionScreen({
               disabled={disableButtons}
               hideLabel
             />
+
             <ToggleVideoButton
               className={classes.buttons}
               disabled={disableButtons}
@@ -194,8 +195,8 @@ export default function DeviceSelectionScreen({
   const handleJoin = () => {
     getToken(name, roomName).then((token) => {
       videoConnect(token);
-      // process.env.REACT_APP_DISABLE_TWILIO_CONVERSATIONS !== "true" &&
-      //   chatConnect(token);
+      process.env.REACT_APP_DISABLE_TWILIO_CONVERSATIONS !== "true" &&
+        chatConnect(token);
     });
   };
 

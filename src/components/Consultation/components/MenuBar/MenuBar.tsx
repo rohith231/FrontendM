@@ -10,7 +10,7 @@ import useVideoContext from "../../hooks/useVideoContext/useVideoContext";
 import DeviceSelectionDialog from "../DeviceSelectionDialog/DeviceSelectionDialog";
 import ToggleAudioButton from "../Buttons/ToggleAudioButton/ToggleAudioButton";
 import DisconnectButton from "../Buttons/DisconnectButton/DisconnectButton";
-import ChatButton from "../Buttons/ChatButton/ChatButton";
+import ToggleChatButton from "../Buttons/ToggleChatButton/ToggleChatButton";
 import AddPersonButton from "../Buttons/AddPersonButton/AddPersonButton";
 import ToggleVideoButton from "../Buttons/ToggleVideoButton/ToggleVideoButton";
 import AddParticipantDialog from "../AddParticipantDialog/AddParticipantDialog";
@@ -233,12 +233,15 @@ export default function MenuBar() {
           disabled={isReconnecting}
           hideLabel
         />
+
         <ToggleVideoButton
           className={classes.buttons}
           disabled={isReconnecting}
           hideLabel
         />
-        <ChatButton className={classes.buttons} onClick={() => {}} />
+        {process.env.REACT_APP_DISABLE_TWILIO_CONVERSATIONS !== "true" && (
+          <ToggleChatButton className={classes.buttons} />
+        )}
         <AddPersonButton
           className={classes.buttons}
           onClick={() => setAddParticipantsDialogOpen(true)}
