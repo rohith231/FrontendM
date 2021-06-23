@@ -6,6 +6,7 @@ import moment from "moment";
 
 import LocalVideoPreview from "./LocalVideoPreview/LocalVideoPreview";
 import DeviceSelectionDialog from "../../DeviceSelectionDialog/DeviceSelectionDialog";
+import AddParticipantDialog from "../../AddParticipantDialog/AddParticipantDialog";
 import AvatarIcon from "../../../icons/AvatarIcon";
 import ToggleAudioButton from "../../Buttons/ToggleAudioButton/ToggleAudioButton";
 import ToggleVideoButton from "../../Buttons/ToggleVideoButton/ToggleVideoButton";
@@ -36,6 +37,9 @@ export default function DeviceSelectionScreen({
 }: DeviceSelectionScreenProps) {
   const classes = useStyles();
   const [deviceSettingsOpen, setDeviceSettingsOpen] = useState(true);
+  const [addParticipantsDialogOpen, setAddParticipantsDialogOpen] = useState(
+    false
+  );
   const [remainingTime, setRemainingTime] = useState(1);
   const { getToken, isFetching } = useAppState();
   const { connect: chatConnect } = useChatContext();
@@ -59,7 +63,7 @@ export default function DeviceSelectionScreen({
 
   const currentDateTime = new Date();
   let futureDateTime = new Date();
-  futureDateTime.setMinutes(currentDateTime.getMinutes() + 30);
+  futureDateTime.setMinutes(currentDateTime.getMinutes() + 10000);
 
   const getDurationInMinutes = (): number => {
     return moment(futureDateTime).diff(moment(currentDateTime), "minutes");
@@ -159,7 +163,10 @@ export default function DeviceSelectionScreen({
               hideLabel
             />
             <ChatButton className={classes.buttons} onClick={() => {}} />
-            <AddPersonButton className={classes.buttons} onClick={() => {}} />
+            <AddPersonButton
+              className={classes.buttons}
+              onClick={() => setAddParticipantsDialogOpen(true)}
+            />
             <DisconnectButton
               className={classes.disconnectButton}
               onClick={() => {
@@ -246,6 +253,13 @@ export default function DeviceSelectionScreen({
         open={deviceSettingsOpen}
         onClose={() => {
           setDeviceSettingsOpen(false);
+        }}
+      />
+
+      <AddParticipantDialog
+        open={addParticipantsDialogOpen}
+        onClose={() => {
+          setAddParticipantsDialogOpen(false);
         }}
       />
     </>
