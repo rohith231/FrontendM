@@ -1,10 +1,10 @@
-import MainParticipantInfo from '../MainParticipantInfo/MainParticipantInfo';
-import ParticipantTracks from '../ParticipantTracks/ParticipantTracks';
-import React from 'react';
-import useMainParticipant from '../../hooks/useMainParticipant/useMainParticipant';
-import useSelectedParticipant from '../VideoProvider/useSelectedParticipant/useSelectedParticipant';
-import useScreenShareParticipant from '../../hooks/useScreenShareParticipant/useScreenShareParticipant';
-import useVideoContext from '../../hooks/useVideoContext/useVideoContext';
+import MainParticipantInfo from "../MainParticipantInfo/MainParticipantInfo";
+import ParticipantTracks from "../ParticipantTracks/ParticipantTracks";
+import React from "react";
+import useMainParticipant from "../../hooks/useMainParticipant/useMainParticipant";
+import useSelectedParticipant from "../VideoProvider/useSelectedParticipant/useSelectedParticipant";
+import useScreenShareParticipant from "../../hooks/useScreenShareParticipant/useScreenShareParticipant";
+import useVideoContext from "../../hooks/useVideoContext/useVideoContext";
 
 export default function MainParticipant() {
   const mainParticipant = useMainParticipant();
@@ -14,10 +14,13 @@ export default function MainParticipant() {
   const screenShareParticipant = useScreenShareParticipant();
 
   const videoPriority =
-    (mainParticipant === selectedParticipant || mainParticipant === screenShareParticipant) &&
+    (mainParticipant === selectedParticipant ||
+      mainParticipant === screenShareParticipant) &&
     mainParticipant !== localParticipant
-      ? 'high'
+      ? "high"
       : null;
+
+  console.log("mainParticipant", mainParticipant);
 
   return (
     /* audio is disabled for this participant component because this participant's audio 
