@@ -224,7 +224,6 @@ export default function MenuBar() {
         <Typography variant="body1" className={classes.textWhite}>
           {room!.name}
         </Typography>
-        <NetworkQualityLevel participant={localParticipant} />
       </div>
 
       <div className={classes.footer}>
